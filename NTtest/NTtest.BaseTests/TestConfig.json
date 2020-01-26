@@ -1,0 +1,9 @@
+{
+  "Timeouts": {
+    "Quick": 100,
+    "Short": 1000,
+    "Medium": 3000,
+    "Long": 10000,
+    "Implicit": 20000
+  }
+}
