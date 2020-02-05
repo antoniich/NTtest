@@ -6,10 +6,10 @@ using FluentAssertions.Execution;
 
 namespace NTtest.BaseTests
 {
-    public class UnitTest1
+    public class ConfigFileUnitTest
     {
         [Fact]
-        public void TimeoutsCheck()
+        public void GetTimeoutsFromConfigFile()
         {
             using (new AssertionScope())
             {
@@ -18,6 +18,17 @@ namespace NTtest.BaseTests
                 Timeout.Medium.TotalMilliseconds.Should().Be(3000);
                 Timeout.Long.TotalMilliseconds.Should().Be(10000);
                 Timeout.Implicit.TotalMilliseconds.Should().Be(20000);
+            }
+        }
+
+        [Fact]
+        public void GetBrowserDataFromConfigFile()
+        {
+            using (new AssertionScope())
+            {
+                Browser.Type.Should().Be(BrowserType.Chrome);
+                Browser.Version.ToString().Should().Be("79.0");
+                Browser.IsRemote.Should().BeFalse();
             }
         }
     }

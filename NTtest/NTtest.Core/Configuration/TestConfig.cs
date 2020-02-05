@@ -1,14 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NTtest.Core.Configuration
 {
-    class TestConfig
+    internal class TestConfig
     {
-        public static IConfiguration Get = new ConfigurationBuilder()
-                .AddJsonFile("TestConfig.json", true, true)
+        public static IConfiguration Get { get; } = new ConfigurationBuilder()
+                .AddJsonFile(ConfigFileName, true, true)
                 .Build();
+
+        private const string ConfigFileName = "TestConfig.json";
     }
 }

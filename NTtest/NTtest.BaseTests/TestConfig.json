@@ -5,5 +5,10 @@
     "Medium": 3000,
     "Long": 10000,
     "Implicit": 20000
+  },
+  "Browser": {
+    "Type": "Chrome",
+    "Version": "79.0",
+    "IsRemote": false
   }
 }
