@@ -10,5 +10,30 @@
     "Type": "Chrome",
     "Version": "79.0",
     "IsRemote": false
+  },
+  "NLog": {
+    "throwConfigExceptions": true,
+    "targets": {
+      "logfile": {
+        "type": "File",
+        "fileName": "${basedir}\\nlog-${shortdate}.log"
+      },
+      "logconsole": {
+        "type": "Console",
+        "layout": "${longdate}|${level}|${callsite}|${message}"
+      }
+    },
+    "rules": [
+      {
+        "logger": "*",
+        "minLevel": "Trace",
+        "writeTo": "logconsole"
+      },
+      {
+        "logger": "*",
+        "minLevel": "Trace",
+        "writeTo": "logfile"
+      }
+    ]
   }
 }

@@ -6,6 +6,8 @@ using System.Text;
 using OpenQA.Selenium.Chrome;
 using System.Reflection;
 using System.IO;
+using NLog;
+using NLog.Extensions.Logging;
 
 namespace NTtest.Core
 {
@@ -13,8 +15,14 @@ namespace NTtest.Core
     {
         public IWebDriver Driver { get; }
 
-        public NtTestContext()
+        public Logger Log { get; } = LogManager.GetCurrentClassLogger();
+
+        public string FullTestName { get; }
+
+        public NtTestContext(string fullTestName = "")
         {
+            FullTestName = fullTestName;
+            LogManager.Configuration = new NLogLoggingConfiguration(TestConfig.Get.GetSection("NLog"));
             Driver = InitializeDriver();
             WindowMaximize();
         }
@@ -23,6 +31,7 @@ namespace NTtest.Core
 
         private IWebDriver InitializeDriver()
         {
+            Log.Info("Driver initialization...");
             IWebDriver webDriver = null;
             switch (Browser.Type)
             {
